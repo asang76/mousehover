@@ -16,7 +16,7 @@
     background-image: url('https://www.wizard.financial/static/media/wizaart-img.56787174.gif');
     background-size: cover;
     position: absolute;
-    transition: left 0.3s ease, top 0.3s ease, transform 0.3s ease; /* Transition effect for left, top, and transform properties */
+    transition: left 3s ease, top 3s ease, transform 3s ease; /* Slower transition */
   }
 </style>
 </head>
@@ -31,22 +31,22 @@
     var lastY = 0;
 
     document.addEventListener('click', function(event) {
-      var posX = event.clientX - (movableContainer.offsetWidth / 2); // Adjust for container's center
-      var posY = event.clientY - (movableContainer.offsetHeight / 2); // Adjust for container's center
+      var posX = event.clientX - (movableContainer.offsetWidth / 2); 
+      var posY = event.clientY - (movableContainer.offsetHeight / 2);
 
-      // Check if the image needs to be mirrored
+     
       if (posX < lastX && !isMirrored) {
-        movableContainer.style.transform = "scaleX(-1)"; // Mirror the image horizontally
+        movableContainer.style.transform = "scaleX(-1)"; 
         isMirrored = true;
       } else if (posX > lastX && isMirrored) {
-        movableContainer.style.transform = "scaleX(1)"; // Reset the transformation
+        movableContainer.style.transform = "scaleX(1)"; 
         isMirrored = false;
       }
 
       movableContainer.style.left = posX + 'px';
       movableContainer.style.top = posY + 'px';
 
-      // Update last position
+   
       lastX = posX;
       lastY = posY;
     });
