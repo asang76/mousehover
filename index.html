@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Move and Mirror GIF on Click</title>
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; /* To prevent scrollbars */
+  }
+  #movableContainer {
+    width: 100px;
+    height: 100px;
+    background-image: url('https://www.wizard.financial/static/media/wizaart-img.56787174.gif');
+    background-size: cover;
+    position: absolute;
+    transition: left 0.3s ease, top 0.3s ease, transform 0.3s ease; /* Transition effect for left, top, and transform properties */
+  }
+</style>
+</head>
+<body>
+<div id="movableContainer"></div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var movableContainer = document.getElementById('movableContainer');
+    var isMirrored = false;
+    var lastX = 0;
+    var lastY = 0;
+
+    document.addEventListener('click', function(event) {
+      var posX = event.clientX - (movableContainer.offsetWidth / 2); // Adjust for container's center
+      var posY = event.clientY - (movableContainer.offsetHeight / 2); // Adjust for container's center
+
+      // Check if the image needs to be mirrored
+      if (posX < lastX && !isMirrored) {
+        movableContainer.style.transform = "scaleX(-1)"; // Mirror the image horizontally
+        isMirrored = true;
+      } else if (posX > lastX && isMirrored) {
+        movableContainer.style.transform = "scaleX(1)"; // Reset the transformation
+        isMirrored = false;
+      }
+
+      movableContainer.style.left = posX + 'px';
+      movableContainer.style.top = posY + 'px';
+
+      // Update last position
+      lastX = posX;
+      lastY = posY;
+    });
+  });
+</script>
+</body>
+</html>
