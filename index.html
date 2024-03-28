@@ -8,7 +8,7 @@
   body, html {
     height: 100%;
     margin: 0;
-    overflow: hidden; /* To prevent scrollbars */
+    overflow: hidden; 
   }
   #movableContainer {
     width: 100px;
@@ -16,7 +16,7 @@
     background-image: url('https://www.wizard.financial/static/media/wizaart-img.56787174.gif');
     background-size: cover;
     position: absolute;
-    transition: left 3s ease, top 3s ease, transform 3s ease; /* Slower transition */
+    transition: left 10s ease, top 10s ease, transform 1s ease; 
   }
 </style>
 </head>
@@ -36,10 +36,10 @@
 
      
       if (posX < lastX && !isMirrored) {
-        movableContainer.style.transform = "scaleX(-1)"; 
+        movableContainer.style.transform = "scaleX(1)"; 
         isMirrored = true;
       } else if (posX > lastX && isMirrored) {
-        movableContainer.style.transform = "scaleX(1)"; 
+        movableContainer.style.transform = "scaleX(-1)"; 
         isMirrored = false;
       }
 
